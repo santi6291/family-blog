@@ -1,0 +1,25 @@
+# Craft Storage (cache) [http://buildwithcraft.com/help/craft-storage-gitignore]
+/craft/storage/*
+!/craft/storage/logo/*
+
+# System, IDE, etc.
+.DS_Store
+.idea*
+*.sublime-*
+.tools
+*.todo
+
+# Configuration
+/.env
+
+# Vendor directories
+# Be specific. There may be other vendor directories further down
+# the tree that need to stay. We'll start with the root /vendor dir
+# as we're using a composer package right out the gate.
+/vendor
+
+# NOTE: Also be careful when ignoring `config` anywhere. The
+# `/craft/app/etc/config` directory must remain intact.
+
+/docker-compose.yml
+/html
