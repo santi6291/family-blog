@@ -3,3 +3,4 @@ craft/config/*.php filter=git-crypt diff=git-crypt
 web.config filter=git-crypt diff=git-crypt
 Makefile filter=git-crypt diff=git-crypt
 license.key filter=git-crypt diff=git-crypt
+notes.txt filter=git-crypt diff=git-crypt
