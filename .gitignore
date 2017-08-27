@@ -22,4 +22,4 @@
 # `/craft/app/etc/config` directory must remain intact.
 
 /docker-compose.yml
-/html
+/logs
