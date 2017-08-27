@@ -5,4 +5,5 @@ Makefile filter=git-crypt diff=git-crypt
 license.key filter=git-crypt diff=git-crypt
 notes.txt filter=git-crypt diff=git-crypt
 .env.production filter=git-crypt diff=git-crypt
-infrastructure/* filter=git-crypt diff=git-crypt
+infrastructure/nginx/includes/default.conf filter=git-crypt diff=git-crypt
+infrastructure/php/Dockerfile filter=git-crypt diff=git-crypt
