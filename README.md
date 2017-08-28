@@ -1,21 +1,29 @@
-Welcome to Craft CMS!
+# Settings up
 
-Here are some online resources you might find useful:
+Create a `docker-compose.yml` file extending `docker-compose.base.yml`
 
+```
+nginx: 
+  extends:
+    file: ./web/infrastructure/docker-compose.base.yml
+    service: base_nginx
+  environment:
+    VIRTUAL_HOST: ''
+  links:
+    - php
 
-Documentation
------------------------------------------------------------------
-Installation instructions and much more.
-https://craftcms.com/docs
+php: 
+  extends:
+    file: ./web/infrastructure/docker-compose.base.yml
+    service: base_php
+  environment:
+    ENV_TYPE: ''
+  #external_links:
+    #- central-mysql:mysql
+    #- mailhog:mailhog
 
-
-Changelog
------------------------------------------------------------------
-Release notes with bug fixes, improvements and additions.
-https://craftcms.com/changelog
-
-
-Stack Exchange
------------------------------------------------------------------
-A great place to ask your Craft questions, meet the awesome Craft community and earn mad reputation.
-https://craftcms.stackexchange.com/
+composer: 
+  extends:
+    file: ./web/infrastructure/docker-compose.base.yml
+    service: base_composer
+```

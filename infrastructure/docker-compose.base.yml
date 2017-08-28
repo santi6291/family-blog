@@ -1,0 +1,25 @@
+base_nginx:
+  image: nginx:latest
+  container_name: nginx
+  working_dir: /var/www/
+  ports:
+    - 80
+  volumes:
+    - ../:/var/www
+    - ./nginx/includes/default.conf:/etc/nginx/conf.d/default.conf
+    - ../logs:/var/log/nginx/
+
+base_php:
+  build: ./php
+  container_name: php
+  volumes:
+    - ../:/var/www/
+  ports:
+    - 9000
+
+base_composer:
+  image: composer/composer
+  container_name: composer
+  working_dir: /var/www/
+  volumes: 
+    - ../:/var/www
