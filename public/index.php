@@ -1,4 +1,22 @@
 <?php
+switch (getenv('ENV_TYPE')) {
+    case 'production':
+        $envFile = '.env.production';
+    break;
+
+    case 'staging':
+        $envFile = '.env.staging';
+    break;
+    
+    default:
+        $envFile = '.env';
+    break;
+};
+
+// Added to support `.env` composer package
+require_once '../vendor/autoload.php';
+$dotenv = new Dotenv\Dotenv(__DIR__.'/../', $envFile);
+$dotenv->load();
 
 // Path to your craft/ folder
 $craftPath = '../craft';

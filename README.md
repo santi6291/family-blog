@@ -17,7 +17,7 @@ php:
     file: ./web/infrastructure/docker-compose.base.yml
     service: base_php
   environment:
-    ENV_TYPE: ''
+    ENV_TYPE: 'development|staging|production'
   #external_links:
     #- central-mysql:mysql
     #- mailhog:mailhog
