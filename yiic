@@ -1,0 +1,10 @@
+#!/usr/bin/env php
+<?php
+require_once __DIR__.'/vendor/autoload.php';
+if (file_exists(__DIR__.'/.env')) {
+    (new Dotenv\Dotenv(__DIR__))->load();
+}
+if (getenv('CRAFT_ENVIRONMENT')) {
+    define('CRAFT_ENVIRONMENT', getenv('CRAFT_ENVIRONMENT'));
+}
+require_once __DIR__.'/craft/app/etc/console/yiic.php';
