@@ -1,6 +1,5 @@
 base_nginx:
   image: nginx:latest
-  container_name: nginx
   working_dir: /var/www/
   ports:
     - 80
@@ -11,7 +10,6 @@ base_nginx:
 
 base_php:
   build: ./php
-  container_name: php
   volumes:
     - ../:/var/www/
     - ./php/includes/php.ini:/usr/local/etc/php/conf.d/php.ini
@@ -20,7 +18,6 @@ base_php:
 
 base_composer:
   image: composer/composer
-  container_name: composer
   working_dir: /var/www/
   volumes: 
     - ../:/var/www
