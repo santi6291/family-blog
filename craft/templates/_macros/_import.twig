@@ -1,0 +1,19 @@
+{% macro story(params) %}
+    {% import '_macros/story.twig' as content %}
+    {{ content.main(params) }}
+{% endmacro %}
+
+{% macro spotlight(params) %}
+    {% import '_macros/spotlight.twig' as content %}
+    {{ content.main(params) }}
+{% endmacro %}
+
+{% macro pagination(params) %}
+    {% import '_macros/pagination.twig' as content %}
+    {{ content.main(params) }}
+{% endmacro %}
+
+{% macro imageGallery(params) %}
+    {% import '_macros/image-gallery.twig' as content %}
+    {{ content.main(params) }}
+{% endmacro %}
