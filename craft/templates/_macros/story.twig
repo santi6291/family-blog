@@ -1,0 +1,18 @@
+{% macro main(params) %}
+    {% set intro = ['onload-content-fade-up', 'onload-image-fade-in'] %}
+     
+    <section class="banner {{ params.style|default('style1') }} orient-center content-align-center image-position-center {{ intro|join(' ') }}">
+        <div class="content">
+            <h1><a href="{{ params.entry.url }}">{{ params.entry.title }}</a></h1>
+            
+            {{ params.entry.body }}
+            
+            <ul class="actions vertical">
+                <li><a href="{{ params.entry.url }}" class="button big wide smooth-scroll-middle">Read more &gt;</a></li>
+            </ul>
+        </div>
+        <div class="image">
+            <img src="sample-images/banner.jpg" alt="" />
+        </div>
+    </section>
+{% endmacro %}
