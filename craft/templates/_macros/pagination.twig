@@ -1,0 +1,35 @@
+{% macro main(pageInfo) %}
+    <ul class="actions fit">
+        {% if pageInfo.currentPage != 1 %}
+            {{ _self.listItem(pageInfo.firstUrl, '<<', 'special') }}
+        {% endif %}
+
+        {% if pageInfo.prevUrl %}
+            {{ _self.listItem(pageInfo.prevUrl, '<', 'special') }}
+        {% endif %}
+
+        {% for page, url in pageInfo.getPrevUrls(5) %}
+            {{ _self.listItem(url, page) }}
+        {% endfor %}
+        
+        {{ _self.listItem('#', pageInfo.currentPage, 'disabled') }}
+        
+        {% for page, url in pageInfo.getNextUrls(5) %}
+            {{ _self.listItem(url, page) }}
+        {% endfor %}
+
+        {% if pageInfo.nextUrl %}
+            {{ _self.listItem(pageInfo.nextUrl, '>', 'special') }}
+        {% endif %}
+
+        {% if pageInfo.currentPage != pageInfo.totalPages %}
+            {{ _self.listItem(pageInfo.lastUrl, '>>', 'special') }}
+        {% endif %}
+    </ul>
+{% endmacro %}
+
+{% macro listItem(url, page, class) %}
+    <li>
+        <a href="{{ url }}" class="button fit {{ class }}">{{ page }}</a>
+    </li>
+{% endmacro %}
