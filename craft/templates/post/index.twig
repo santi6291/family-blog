@@ -1,27 +1,19 @@
-{#
- # News index template
- # -------------------
- #
- # This template is loaded whenever http://example.com/news is
- # requested, because it is located at news/index.html in your
- # craft/templates/ folder.
- #
- # See this page for more details on how Craft routes requests:
- # http://craftcms.com/docs/routing
- #}
-
 {% extends "_layout" %}
-{% set title = "News" %}
+{% import '_macros/_import.twig' as sections %}
+{% paginate craft.entries.section('post').limit(10) as pageInfo, pageEntries %}
 
 {% block content %}
-	<h1>News</h1>
+    
+    {% for entry in pageEntries %}
+        {{ sections.spotlight({
+            entry: entry,
+            index: loop.index
+        }) }}
+    {% endfor %}
+{% endblock %}
 
-	{% for entry in craft.entries.section('post').find() %}
-		<article>
-			<h3><a href="{{ entry.url }}">{{ entry.title }}</a></h3>
-			<p>Posted on {{ entry.postDate.format('F d, Y') }}</p>
-			{{ entry.body.getPage(1) }}
-			<p><a href="{{ entry.url }}">Continue reading</a></p>
-		</article>
-	{% endfor %}
+{% block footer %}
+    {% if pageInfo.totalPages > 1 %}
+        {{ sections.pagination(pageInfo) }}
+    {% endif %}
 {% endblock %}
