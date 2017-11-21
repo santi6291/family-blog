@@ -1,18 +1,25 @@
 {% macro main(params) %}
     {% set intro = ['onload-content-fade-up', 'onload-image-fade-in'] %}
-     
-    <section class="banner {{ params.style|default('style1') }} orient-center content-align-center image-position-center {{ intro|join(' ') }}">
+    {% set style = params.style|default('style1') %}
+    <section class="banner {{ style }} orient-center content-align-center image-position-center {{ intro|join(' ') }}">
         <div class="content">
-            <h1><a href="{{ params.entry.url }}">{{ params.entry.title }}</a></h1>
+            {% if style == 'style1' %}
+                <h1>{{ params.entry.title }}</h1>
+            {% else %}
+                <h1><a href="{{ params.entry.url }}">{{ params.entry.title }}</a></h1>
+            {% endif %}
             
             {{ params.entry.body }}
-            
-            <ul class="actions vertical">
-                <li><a href="{{ params.entry.url }}" class="button big wide smooth-scroll-middle">Read more &gt;</a></li>
-            </ul>
+            {% if style != 'style1' %}
+                <ul class="actions vertical">
+                    <li><a href="{{ params.entry.url }}" class="button big wide smooth-scroll-middle">Read more &gt;</a></li>
+                </ul>
+            {% endif %}
         </div>
         <div class="image">
-            <img src="sample-images/banner.jpg" alt="" />
+            {% if params.entry.featuredImage is not empty %}
+                <img src="{{ params.entry.featuredImage.first().url }}"/>
+            {% endif %}
         </div>
     </section>
 {% endmacro %}
