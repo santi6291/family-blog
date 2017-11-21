@@ -13,7 +13,24 @@
 {% endblock %}
 
 {% block footer %}
-    {# {% if pageInfo.totalPages > 1 %}
-        {{ sections.pagination(pageInfo) }}
-    {% endif %} #}
+    {% set params = {section: 'post', order: 'postDate', limit: null} %}
+    {% set entry_prev = entry.getPrev(params) %}
+    {% set entry_next = entry.getNext(params) %}
+    <ul class="actions fit">
+        {% if entry_prev %}
+            <li>
+                <a href="{{ entry_prev.url }}" class="button fit">Previous Post</a>
+            </li>
+        {% endif %}
+        
+        <li>
+            <a href="{{ url('/post') }}" class="button fit">Sell All</a>
+        </li>
+
+        {% if entry_next %}
+            <li>
+                <a href="{{ entry_next.url }}" class="button fit">Next Post</a>
+            </li>
+        {% endif %}
+    </ul>
 {% endblock %}
