@@ -17,3 +17,13 @@
     {% import '_macros/image-gallery.twig' as content %}
     {{ content.main(params) }}
 {% endmacro %}
+
+{% macro imageGrid(params) %}
+    {% import '_macros/image-grid.twig' as content %}
+    {{ content.main(params) }}
+{% endmacro %}
+
+{% macro bodyHeading(params) %}
+    {% import '_macros/body-heading.twig' as content %}
+    {{ content.main(params) }}
+{% endmacro %}
