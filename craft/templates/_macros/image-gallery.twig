@@ -11,8 +11,8 @@
 
 {% macro slide(slideContent) %}
     <article>
-        <a href="images/gallery/fulls/12.jpg" class="image">
-            <img src="{{ slideContent.slideImage.first() }}" />
+        <a href="{{ slideContent.slideImage.first().url }}" class="image">
+            <img src="{{ slideContent.slideImage.first().url }}" />
         </a>
         <div class="caption">
             <h3>{{ slideContent.slideTitle }}</h3>
